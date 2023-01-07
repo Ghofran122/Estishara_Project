@@ -5,7 +5,5 @@ class SigninModels{
   SigninModels({
     this.email,
     this.password,
-  }){
-
-  }
+  }){}
 }

@@ -13,7 +13,10 @@ import 'package:hello_world/getx_bindings/info_add_binding.dart';
 import 'package:hello_world/getx_bindings/signin_binding.dart';
 import 'package:hello_world/getx_bindings/signup_binding.dart';
 import 'package:hello_world/modules/bmi_app/model_class/model_class.dart';
+import 'package:hello_world/modules/estishara_app/add_appointment_screen/add_appointment.dart';
+import 'package:hello_world/modules/estishara_app/appointments_screen/appointments.dart';
 import 'package:hello_world/modules/estishara_app/consult_screen/consult.dart';
+import 'package:hello_world/modules/estishara_app/edit_profile_screen/edit_exper_profilet.dart';
 import 'package:hello_world/modules/estishara_app/expert_profile_screen/expert_profile.dart';
 import 'package:hello_world/modules/estishara_app/expert_screen/expert.dart';
 import 'package:hello_world/modules/estishara_app/first_screen/first.dart';
@@ -22,7 +25,6 @@ import 'package:hello_world/modules/estishara_app/home_layout_screen//home_layou
 import 'package:hello_world/modules/estishara_app/info_add_screen/info_add.dart';
 import 'package:hello_world/modules/estishara_app/profile_screen/expert_profile_personal.dart';
 import 'package:hello_world/modules/estishara_app/profile_screen/user_profile_personal.dart';
-import 'package:hello_world/modules/estishara_app/reservations_screen/reservations.dart';
 import 'package:hello_world/modules/estishara_app/setting_screen/setting.dart';
 import 'package:hello_world/modules/estishara_app/signin_screen/signin.dart';
 import 'package:get/get.dart';
@@ -50,9 +52,10 @@ class MyApp extends StatelessWidget{
         GetPage(name: '/consult', page: () => Consult(), binding: ConsultBinding()),
         GetPage(name: '/userProfilePersonal', page: () => UserProfilePersonal(),),
         GetPage(name: '/expertProfilePersonal', page: () => ExpertProfilePersonal(),),
+        GetPage(name: '/editExpertProfile', page: () => EditExpertProfile()),
         GetPage(name: '/expert', page: () => Expert(),),
         GetPage(name: '/expertProfile', page: () => ExpertProfile(),),
-        GetPage(name: '/reservayions', page: () => Reservations(),),
+        GetPage(name: '/reservayions', page: () => Appointment(),),
 
       ],
     );

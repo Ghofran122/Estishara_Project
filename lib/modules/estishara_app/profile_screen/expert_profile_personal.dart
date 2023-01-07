@@ -45,6 +45,22 @@ class ExpertProfilePersonal extends StatelessWidget {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          if(type == 'expert') {
+            Get.offAndToNamed(
+                '/editExpertProfile',
+                arguments: 'expert'
+            );
+          }
+          //Get.offAndToNamed('/editExpertProfile');
+        },
+        child: Icon(
+                  Icons.edit,
+                  color: Colors.white,
+                ),
+        backgroundColor: Colors.indigoAccent,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -61,11 +77,76 @@ class ExpertProfilePersonal extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
+                    height: 10.0,
+                  ),
+                  Center(
+                    child: Stack(
+                      alignment: AlignmentDirectional.centerStart,
+                      children: [
+                        Material(
+                          elevation: 10.0,
+                          shadowColor: Colors.grey[100],
+                          borderRadius: BorderRadius.circular(30.0),
+                          color: Colors.white,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30.0),
+                              color: Colors.white,
+                            ),
+                            padding: EdgeInsetsDirectional.only(
+                              top: 0.0,
+                              bottom: 0.0,
+                              start: 13.0,
+                              end: 15.0,
+                            ),
+                            height: 40.0,
+                            width: 180.0,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '19\$',
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        /*defaultCircollerAvatar(
+                      ImageProfileAssetsPath: 'assets/images/profile.png',
+                      radius: 50.0,
+                    ),*/
+                        Container(
+                          width: 120.0,
+                          child: defaultMaterialButtonText(
+                              text: Text(
+                                'Your balance',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15.0,
+                                ),
+                              ),
+                              onPresse: (){
+                                Get.toNamed('/addAppointment');
+                              },
+                              colorMaterialButton: Colors.indigoAccent,
+                              weidth: 50.0,
+                              hight: 40.0
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  SizedBox(
                     height: 15.0,
                   ),
                   defaultTextField(
                     discribtionText: 'Name:',
                     text: 'Aya Hammad',
+                    //fieldHeight: 80.0
                   ),
                   SizedBox(
                     height: 20.0,
@@ -73,6 +154,7 @@ class ExpertProfilePersonal extends StatelessWidget {
                   defaultTextField(
                     discribtionText: 'Email:',
                     text: 'Aya@gmail.com',
+                    //fieldHeight: 80.0
                   ),
                   SizedBox(
                     height: 20.0,
@@ -80,6 +162,7 @@ class ExpertProfilePersonal extends StatelessWidget {
                   defaultTextField(
                     discribtionText: 'Password:',
                     text: '**********',
+                    //fieldHeight: 80.0
                   ),
                   SizedBox(
                     height: 20.0,
@@ -95,6 +178,7 @@ class ExpertProfilePersonal extends StatelessWidget {
                   defaultTextField(
                     discribtionText: 'Phone Number:',
                     text: '+2334567890',
+                    //fieldHeight: 80.0
                   ),
                   SizedBox(
                     height: 20.0,
@@ -102,6 +186,7 @@ class ExpertProfilePersonal extends StatelessWidget {
                   defaultTextField(
                     discribtionText: 'Address:',
                     text: 'New York, America',
+                    //fieldHeight: 80.0
                   ),
                   SizedBox(
                     height: 20.0,
@@ -109,7 +194,7 @@ class ExpertProfilePersonal extends StatelessWidget {
                   defaultTextField(
                     discribtionText: 'Worktime:',
                     text: 'Mon to Wed from 08:00 AM to 04:00 PM',
-                    fieldHeight: 60.0,
+                    //fieldHeight: 80.0,
                   ),
                   SizedBox(
                     height: 20.0,
@@ -117,6 +202,7 @@ class ExpertProfilePersonal extends StatelessWidget {
                   defaultTextField(
                     discribtionText: 'Consultation provided:',
                     text: 'Medical',
+                    //fieldHeight: 80.0
                   ),
                   /*SizedBox(
                     height: 20.0,

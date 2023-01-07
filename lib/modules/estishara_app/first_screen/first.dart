@@ -112,15 +112,6 @@ class _FirstState extends State<First> {
               hight: 50.0,
               borderSideButton: BorderSide.none,
               onPresse: (){
-                /*Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Consult(
-                      type: selectedType,
-                    ),
-                  ),
-                  //(route) => false,
-                );*/
                 if(selectedType == 'user') {
                   Get.offAndToNamed(
                       '/signin',
@@ -140,3 +131,15 @@ class _FirstState extends State<First> {
     );
   }
 }
+
+
+
+/*Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Consult(
+                      type: selectedType,
+                    ),
+                  ),
+                  //(route) => false,
+                );*/

@@ -5,12 +5,14 @@ Widget defaultTextFormField({
   required String textLable,
   Icon? pIcon,
   required TextInputType textInputType,
-  required TextEditingController controllerText,
-  required Function validat,
+  TextEditingController? controllerText,
+  bool isClickedAble = true,
+  Function? validat,
   void Function(String?)? onChang,
   bool isPass = false,
   Icon? sIcon,
   Function? onPressPass,
+  Function? onTap,
   double boxWidth = double.infinity,
   double boxHeight = 100,
   Color boxColor = Colors.white,
@@ -21,8 +23,12 @@ Widget defaultTextFormField({
   child: TextFormField(
     controller: controllerText,
     onChanged: onChang,
+    onTap: (){
+      onTap!();
+    },
     validator: (value){
-      validat(value);
+      validat!
+        (value);
     },
     decoration: InputDecoration(
       labelText: textLable,
@@ -49,6 +55,7 @@ Widget defaultTextFormField({
     ),
     keyboardType: textInputType,
     obscureText: isPass,
+    enabled: isClickedAble,
   ),
 );
 
@@ -100,9 +107,6 @@ Widget defaultExpertItem({
   String? imageProfile,
 }) => Column(
   children: [
-/*    SizedBox(
-      height: 4.0,
-    ),*/
     Padding(
       padding: const EdgeInsetsDirectional.only(
         top: 4.0,
@@ -117,6 +121,7 @@ Widget defaultExpertItem({
             defaultCircollerAvatar(
               //imageProfile: profileImage,
               ImageProfileAssetsPath: imageProfile,
+              radius: 25.0,
             ),
             Padding(
               padding: const EdgeInsetsDirectional.only(
@@ -133,8 +138,8 @@ Widget defaultExpertItem({
                       name,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 17.0,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
@@ -149,6 +154,7 @@ Widget defaultExpertItem({
                           color: Colors.black,
                           //fontSize: 20.0,
                           fontWeight: FontWeight.w400,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ),
@@ -163,10 +169,17 @@ Widget defaultExpertItem({
 /*    SizedBox(
       height: 4.0,
     ),*/
-    Container(
-      width: double.infinity,
-      height: 1.0,
-      color: Colors.indigoAccent,
+    Padding(
+      padding: const EdgeInsetsDirectional.only(
+        start: 60.0,
+        top: 5.0,
+        bottom: 5.0,
+      ),
+      child: Container(
+        width: double.infinity,
+        height: 1.0,
+        color: Colors.indigoAccent,
+      ),
     ),
   ],
 );
@@ -288,6 +301,7 @@ Widget defaultTextField({
         padding: EdgeInsetsDirectional.only(
           start: 20.0,
           end: 10.0,
+          top: 5.0
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -326,4 +340,99 @@ Widget defaultMaterialButtonText({
     borderSide: borderSideButton,
   ),
   minWidth: weidth,
+);
+
+Widget defaultAppointmenttItem({
+  //required Icon profileImage,
+  required date,
+  required time,
+}) => Column(
+  children: [
+    Padding(
+      padding: const EdgeInsetsDirectional.only(
+        top: 8.0,
+        bottom: 4.0,
+        start: 8.0,
+        end: 8.0,
+      ),
+      child: Container(
+        height: 60.0,
+        child: Padding(
+          padding: const EdgeInsetsDirectional.only(
+            top: 4.0,
+            bottom: 4.0,
+            start: 8.0,
+          ),
+          child: Row(
+            children: [
+              Container(
+                height: 65.0,
+                width: 50.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15.0),
+                  color: Colors.indigoAccent,
+                ),
+                child: Icon(
+                  Icons.date_range_outlined,
+                  color: Colors.white,
+                ),
+                /*Center(
+                        child: Text(
+                          '1',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
+                            //fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),*/
+              ),
+              SizedBox(
+                width: 15.0,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    date,
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                      fontSize: 19.0,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 9.0,
+                  ),
+                  Container(
+                    child: Text(
+                      time,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18.0,
+                        //fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+    SizedBox(
+      height: 10.0,
+    ),
+    Padding(
+      padding: const EdgeInsetsDirectional.only(
+        start: 82.0,
+      ),
+      child: Container(
+        width: double.infinity,
+        height: 1.0,
+        color: Colors.indigoAccent,
+      ),
+    ),
+  ],
 );

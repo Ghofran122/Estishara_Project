@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -5,22 +7,19 @@ import 'package:get/get.dart';
 import 'package:hello_world/modules/estishara_app/consult_screen/consult.dart';
 import 'package:hello_world/modules/estishara_app/info_add_screen/info_add.dart';
 import 'package:hello_world/modules/estishara_app/signin_screen/signin_controller.dart';
+import 'package:hello_world/modules/estishara_app/signin_screen/signin_service.dart';
 import 'package:hello_world/modules/estishara_app/signup_screen/sing_up.dart';
 import 'package:hello_world/shared/components/components.dart';
+import '../../../models/signin.dart';
 
 class SignIn extends StatefulWidget {
-
-  var type = Get.arguments;
+  var type_get = Get.arguments;
 
   @override
   State<SignIn> createState() => _SignInState();
 }
 
 class _SignInState extends State<SignIn> {
-
-
-
-
   SignInController controller = Get.find();
 
   var type = Get.arguments;
@@ -31,11 +30,13 @@ class _SignInState extends State<SignIn> {
 
   var formKey = GlobalKey<FormState>();
 
+
   Icon suufIconShow = Icon(
     Icons.visibility_outlined,
     color: Colors.grey[600],
   );
 
+  SigninService signin_service_obj = SigninService();
   bool isPasswordShow = true;
 
   @override
@@ -85,7 +86,7 @@ class _SignInState extends State<SignIn> {
                     controllerText: emailController,
                     onChang: (value) => controller.email = value,
                     validat: (String value) {
-                      if(value.isEmpty){
+                      if (value.isEmpty) {
                         return 'email can not be empty';
                       }
                       return null;
@@ -104,16 +105,15 @@ class _SignInState extends State<SignIn> {
                     controllerText: passwordController,
                     sIcon: suufIconShow,
                     isPass: isPasswordShow,
-                    onPressPass: (){
+                    onPressPass: () {
                       setState(() {
                         isPasswordShow = !isPasswordShow;
-                        if(isPasswordShow == true){
+                        if (isPasswordShow == true) {
                           suufIconShow = Icon(
                             Icons.visibility_outlined,
                             color: Colors.grey[600],
                           );
-                        }
-                        else{
+                        } else {
                           suufIconShow = Icon(
                             Icons.visibility_off_outlined,
                             color: Colors.grey[600],
@@ -122,7 +122,7 @@ class _SignInState extends State<SignIn> {
                       });
                     },
                     validat: (value) {
-                      if(value.isEmpty){
+                      if (value.isEmpty) {
                         return 'password is too short';
                       }
                       return null;
@@ -139,7 +139,6 @@ class _SignInState extends State<SignIn> {
                         style: TextStyle(
                           fontSize: 25.0,
                           fontWeight: FontWeight.bold,
-
                         ),
                       ),
                       SizedBox(
@@ -152,32 +151,30 @@ class _SignInState extends State<SignIn> {
                             color: Colors.white,
                           ),
                           borderSideButton: BorderSide.none,
-                        onPresse: (){
-                          if(formKey.currentState!.validate()){
-                            print(controller.email);
-                            print(passwordController.text);
-                            /*Navigator.push(
+                          onPresse: () {
+                            if (formKey.currentState!.validate()) {
+                              SigninModels sign_in_model_obj = SigninModels(
+                                email: emailController.text.toString(),
+                                password: passwordController.text.toString(),
+                              );
+                              // print(sign_in_model_obj.email);
+                              signin_service_obj.signin(sign_in_model_obj);
+                              /*Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => Consult(),
                               ),
                               //(route) => false,
                             );*/
-                            if(type == 'user') {
-                              Get.offAndToNamed(
-                                  '/homeLayoutUser',
-                                  arguments: 'user'
-                              );
+                              if (type == 'user') {
+                                Get.offAndToNamed('/homeLayoutUser',
+                                    arguments: 'user');
+                              } else if (type == 'expert') {
+                                Get.offAndToNamed('/homeLayoutExpert',
+                                    arguments: 'expert');
+                              }
                             }
-                            else if(type == 'expert') {
-                              Get.offAndToNamed(
-                                  '/homeLayoutExpert',
-                                  arguments: 'expert'
-                              );
-                            }
-                          }
-                        }
-                      ),
+                          }),
                     ],
                   ),
                   SizedBox(
@@ -190,7 +187,7 @@ class _SignInState extends State<SignIn> {
                         'Don\'t have an account yet?',
                       ),
                       TextButton(
-                        onPressed: (){
+                        onPressed: () {
                           /*Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
@@ -198,17 +195,10 @@ class _SignInState extends State<SignIn> {
                             ),
                             (route) => false,
                           );*/
-                          if(type == 'user') {
-                            Get.offAndToNamed(
-                                '/signup',
-                                arguments: 'user'
-                            );
-                          }
-                          else if(type == 'expert') {
-                            Get.offAndToNamed(
-                                '/signup',
-                                arguments: 'expert'
-                            );
+                          if (type == 'user') {
+                            Get.offAndToNamed('/signup', arguments: 'user');
+                          } else if (type == 'expert') {
+                            Get.offAndToNamed('/signup', arguments: 'expert');
                           }
                         },
                         child: Text(

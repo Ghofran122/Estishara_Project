@@ -6,6 +6,8 @@ import 'package:hello_world/modules/estishara_app/signin_screen/signin.dart';
 import 'package:hello_world/modules/estishara_app/signup_screen/signup_controller.dart';
 import 'package:hello_world/shared/components/components.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'signup_service.dart';
+import '/models/signup.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -26,7 +28,7 @@ class _SignUpState extends State<SignUp> {
 
   var formKey = GlobalKey<FormState>();
 
-  bool expert = true;
+  bool expert = false;
 
   Icon suufIconShow = Icon(
     Icons.visibility_outlined,
@@ -39,7 +41,7 @@ class _SignUpState extends State<SignUp> {
     Icons.visibility_outlined,
     color: Colors.grey[600],
   );
-
+   SignupService signup_service_obj =SignupService();
   bool cIsPasswordShow = true;
 
   @override
@@ -76,7 +78,6 @@ class _SignUpState extends State<SignUp> {
                       fontSize: 16.0,
                     ),
                   ),
-
                   SizedBox(
                     height: 45.0,
                   ),
@@ -232,12 +233,30 @@ class _SignUpState extends State<SignUp> {
                                   '/homeLayoutUser',
                                   arguments: 'user'
                               );
+                              SignupModels sign_up_model_obj =SignupModels(
+                                  name: nameController.value.toString(),
+                                  email: emailController.value.toString(),
+                                  password: passwordController.value.toString(),
+                                  passwordConfirm : cPasswordController.value.toString(),
+                                role_is: 0.toString()
+                              );
+                              signup_service_obj.signup(sign_up_model_obj);
+
                             }
                             else if(type == 'expert') {
                               Get.offAndToNamed(
                                   '/addInformation',
                                   arguments: 'expert'
                               );
+                              SignupModels sign_up_model_obj =SignupModels(
+                                  name: nameController.value.toString(),
+                                  email: emailController.value.toString(),
+                                  password: passwordController.value.toString(),
+                                  passwordConfirm : cPasswordController.value.toString(),
+                                  role_is: 1.toString()
+                              );
+                              signup_service_obj.signup(sign_up_model_obj);
+                              print('forexpert');
                             }
                             //Get.toNamed('/addInformation');
                           }

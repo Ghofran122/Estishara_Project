@@ -4,7 +4,6 @@ import 'package:hello_world/modules/estishara_app/consult_screen/consult_control
 import 'package:hello_world/modules/estishara_app/expert_profile_screen/expert_profile.dart';
 import 'package:hello_world/modules/estishara_app/expert_screen/expert.dart';
 import 'package:hello_world/modules/estishara_app/profile_screen/user_profile_personal.dart';
-import 'package:hello_world/modules/estishara_app/reservations_screen/reservations.dart';
 import 'package:hello_world/shared/components/components.dart';
 
 class Consult extends StatefulWidget {
@@ -36,56 +35,6 @@ class _ConsultState extends State<Consult> {
             color: Colors.black,
           ),
         ),
-        /*actions: [
-          Padding(
-            padding: const EdgeInsetsDirectional.only(
-              end: 15.0,
-            ),
-            child: defaultCircollerAvatar(
-              ImageProfileAssetsPath: 'assets/images/profile.png',
-              ontap: (){
-                if(type == 'user') {
-                  Get.offAndToNamed(
-                    '/userProfilePersonal',
-                    arguments: 'user',
-                  );
-                }
-                else if(type == 'expert') {
-                  Get.offAndToNamed(
-                    '/expertProfilePersonal',
-                    arguments: 'expert',
-                  );
-                }
-              }
-            ),
-          ),
-          *//*IconButton(
-              color: Colors.grey[100],
-              icon: Icon(
-                Icons.account_circle,
-                color: Colors.grey[400],
-              ),
-              iconSize: 40.0,
-              onPressed: (){
-                *//**//*Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => UserProfilePersonal(),
-                    ));*//**//*
-                if(type == 'user') {
-                  Get.offAndToNamed(
-                      '/userProfilePersonal',
-                      arguments: 'user',
-                  );
-                }
-                else if(type == 'expert') {
-                  Get.offAndToNamed(
-                      '/expertProfilePersonal',
-                      arguments: 'expert',
-                  );
-                }
-              }),*//*
-        ],*/
       ),
 
       body: Padding(
@@ -128,7 +77,19 @@ class _ConsultState extends State<Consult> {
                       builder: (context) => Expert(),
                     ),
                   );*/
-                  Get.toNamed('/expert');
+                  if(type == 'user') {
+                    Get.offAndToNamed(
+                        '/expert',
+                        arguments: 'user'
+                    );
+                  }
+                  else if(type == 'expert') {
+                    Get.offAndToNamed(
+                        '/expert',
+                        arguments: 'expert'
+                    );
+                  }
+                  //Get.toNamed('/expert');
                 },
               ),
               SizedBox(
@@ -143,7 +104,19 @@ class _ConsultState extends State<Consult> {
                       builder: (context) => Expert(),
                     ),
                   );*/
-                  Get.toNamed('/expert');
+                  if(type == 'user') {
+                    Get.offAndToNamed(
+                        '/expert',
+                        arguments: 'user'
+                    );
+                  }
+                  else if(type == 'expert') {
+                    Get.offAndToNamed(
+                        '/expert',
+                        arguments: 'expert'
+                    );
+                  }
+                  //Get.toNamed('/expert');
                 },
               ),
               SizedBox(
@@ -158,8 +131,20 @@ class _ConsultState extends State<Consult> {
                       builder: (context) => Expert(),
                     ),
                   );*/
+                  if(type == 'user') {
+                    Get.offAndToNamed(
+                        '/expert',
+                        arguments: 'user'
+                    );
+                  }
+                  else if(type == 'expert') {
+                    Get.offAndToNamed(
+                        '/expert',
+                        arguments: 'expert'
+                    );
+                  }
                   print(type);
-                  Get.toNamed('/expert');
+                  //Get.toNamed('/expert');
                 },
               ),
             ],

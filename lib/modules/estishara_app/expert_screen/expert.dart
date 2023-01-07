@@ -13,67 +13,31 @@ class Expert extends StatelessWidget {
   List<ExpertModel> users = [
     ExpertModel(
       nameM: 'Ala\'a',
-      experiancM: 'Pharmacist',
+      experiancM: 'Midical advice',
     ),
     ExpertModel(
       nameM: 'Aya',
-      experiancM: 'Nurse',
+      experiancM: 'Midical advice',
     ),
     ExpertModel(
       nameM: 'Ali',
-      experiancM: 'Dermatologist',
+      experiancM: 'Midical advice',
     ),
     ExpertModel(
       nameM: 'Ahmad',
-      experiancM: 'Pediatrician',
+      experiancM: 'Midical advice',
     ),
     ExpertModel(
       nameM: 'Eman',
-      experiancM: 'Pharmacist',
+      experiancM: 'Midical advice',
     ),
     ExpertModel(
       nameM: 'Saleh',
-      experiancM: 'Nurse',
+      experiancM: 'Midical advice',
     ),
     ExpertModel(
       nameM: 'Malek',
-      experiancM: 'Dermatologist',
-    ),
-    ExpertModel(
-      nameM: 'Ala\'a',
-      experiancM: 'Pharmacist',
-    ),
-    ExpertModel(
-      nameM: 'Aya',
-      experiancM: 'Nurse',
-    ),
-    ExpertModel(
-      nameM: 'Ali',
-      experiancM: 'Dermatologist',
-    ),
-    ExpertModel(
-      nameM: 'Ahmad',
-      experiancM: 'Pediatrician',
-    ),
-    ExpertModel(
-      nameM: 'Eman',
-      experiancM: 'Pharmacist',
-    ),
-    ExpertModel(
-      nameM: 'Saleh',
-      experiancM: 'Nurse',
-    ),
-    ExpertModel(
-      nameM: 'Malek',
-      experiancM: 'Dermatologist',
-    ),
-    ExpertModel(
-      nameM: 'Ali',
-      experiancM: 'Dermatologist',
-    ),
-    ExpertModel(
-      nameM: 'Ahmad',
-      experiancM: 'Pediatrician',
+      experiancM: 'Midical advice',
     ),
   ];
 
@@ -86,6 +50,8 @@ class Expert extends StatelessWidget {
   );*/
 
   String? experianc ='3 years in pharmasite';
+
+  var type = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +74,19 @@ class Expert extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => Consult(),
                   ));*/
-            Get.toNamed('/homeLayoutExpert');
+            if(type == 'user') {
+              Get.offAndToNamed(
+                  '/homeLayoutUser',
+                  arguments: 'user'
+              );
+            }
+            else if(type == 'expert') {
+              Get.offAndToNamed(
+                  '/homeLayoutExpert',
+                  arguments: 'expert'
+              );
+            }
+            //Get.toNamed('/homeLayoutExpert');
             }),
         title: Text(
           'Expert',
@@ -161,7 +139,19 @@ class Expert extends StatelessWidget {
                       builder: (context) => ExpertProfile(),
                     ),
                   );
-                  Get.toNamed('/expertProfile');
+                  if(type == 'user') {
+                    Get.offAndToNamed(
+                        '/expertProfile',
+                        arguments: 'user'
+                    );
+                  }
+                  else if(type == 'expert') {
+                    Get.offAndToNamed(
+                        '/expertProfile',
+                        arguments: 'expert'
+                    );
+                  }
+                  //Get.toNamed('/expertProfile');
                 },
                 child: ListView.separated(
                   physics: NeverScrollableScrollPhysics(),

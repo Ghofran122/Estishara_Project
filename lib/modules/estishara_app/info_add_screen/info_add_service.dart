@@ -4,19 +4,21 @@ import 'package:http/http.dart' as http;
 
 class AddInformationService{
 
-  var url =Uri.parse(ServerConfig.domainNameServer + ServerConfig.SigninUser);
+  var url =Uri.parse('127.0.0.8000/api/expert/store');
 
-  addinfo(AddInformationModels AddInfoModels) /*async*/ {
-    var response = /*await*/ http.post(
+  adtdinfo(AddInformationModels AddInfoModels) async{try {
+    var response = await http.post(
       url,
       headers: {
-
       },
       body: {
-        /*'email': AddInformationModels.email,
-        'email': AddInformationModels.password,*/
+
+
       },
     );
+  }catch(e){
+
+  }
     /*print(response.statusCode);
     print(response.body);*/
   }

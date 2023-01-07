@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hello_world/modules/estishara_app/appointments_screen/appointments.dart';
 import 'package:hello_world/modules/estishara_app/consult_screen/consult.dart';
+import 'package:hello_world/modules/estishara_app/edit_profile_screen/edit_exper_profilet.dart';
 import 'package:hello_world/modules/estishara_app/expert_profile_screen/expert_profile.dart';
 import 'package:hello_world/modules/estishara_app/profile_screen/expert_profile_personal.dart';
-import 'package:hello_world/modules/estishara_app/reservations_screen/reservations.dart';
 import 'package:hello_world/modules/estishara_app/setting_screen/setting.dart';
 
 class HomeLayoutExpert extends StatefulWidget {
@@ -22,7 +23,7 @@ class _HomeLayoutExpertState extends State<HomeLayoutExpert> {
   List<Widget> screens = [
     Consult(),
     ExpertProfilePersonal(),
-    Reservations(),
+    Appointment(),
     Setting(),
   ];
 
